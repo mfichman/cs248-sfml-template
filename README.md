@@ -6,7 +6,7 @@ This is a template for writing rendering programs using the [Simple and Fast Mul
 Building and Running the Demo
 -----------------------------
 
-### Linux (Ubunut or similar)
+### Linux (Ubuntu or similar)
 
 1. Install [GLEW](http://glew.sourceforge.net) (Ubuntu: sudo apt-get install libglew1.5-dev)
 2. make
