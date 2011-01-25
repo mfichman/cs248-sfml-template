@@ -14,3 +14,6 @@ main: $(OBJS)
 
 run: main
 	LD_LIBRARY_PATH=linux/lib ./main
+
+clean:
+	rm -rf main *.o
