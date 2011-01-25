@@ -3,8 +3,6 @@ CS 248 SFML Template
 
 This is a template for writing rendering programs using the [Simple and Fast Multimedia Library](www.sfml-dev.org) and the [Open Asset Import Library](assimp.sourceforge.net).
 
-It includes a basic demo in Main.cpp, and a class for loading shaders in Shader.cpp/Shader.h.
-
 Building and Running the Demo
 -----------------------------
 
@@ -28,4 +26,5 @@ Building and Running the Demo
 Included Files
 --------------
 
-There are is a sample Phong shader in the "shaders" folder, and some sample models in the "models" folder.
+There are is a sample Phong shader in the "shaders" folder, and some sample models in the "models" folder.  You can find a basic demo in Main.cpp, and a class for loading shaders in Shader.cpp/Shader.h.
+
