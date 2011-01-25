@@ -1,14 +1,14 @@
 CS 248 SFML Template
 ====================
 
-This is a template for writing rendering programs using the [Simple and Fast Multimedia Library](www.sfml-dev.org) and the [Open Asset Import Library](assimp.sourceforge.net).
+This is a template for writing rendering programs using the [Simple and Fast Multimedia Library](http://www.sfml-dev.org) and the [Open Asset Import Library](http://assimp.sourceforge.net).
 
 Building and Running the Demo
 -----------------------------
 
 ### Linux (Ubunut or similar)
 
-1. Install [GLEW](glew.sourceforge.net) (Ubuntu: sudo apt-get install libglew1.5-dev)
+1. Install [GLEW](http://glew.sourceforge.net) (Ubuntu: sudo apt-get install libglew1.5-dev)
 2. make
 3. make run
 
