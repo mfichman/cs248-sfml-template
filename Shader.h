@@ -7,6 +7,7 @@
  *
  */
 
+#include "Framework.h"
 #include <string>
 #include <vector>
 

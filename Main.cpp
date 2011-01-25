@@ -1,15 +1,4 @@
-
-#ifdef _WIN32
-#define GLEW_STATIC
-#include <GL/glew.h>
-#endif
-
-#include <SFML/Window.hpp>
-#include <assimp.hpp>
-#include <aiScene.h>
-#include <aiPostProcess.h>
-#include <memory>
-#include <iostream>
+#include "Framework.h"
 #include "Shader.h"
 
 #define MODEL_PATH "models/teapot.blend"
@@ -62,14 +51,14 @@ int main(int argc, char** argv) {
 
 void initOpenGL() {
     // Initialize GLEW on Windows, to make sure that OpenGL 2.0 is loaded
-#ifdef _WIN32
+#ifdef FRAMEWORK_USE_GLEW
     GLint error = glewInit();
     if (GLEW_OK != error) {
         std::cerr << glewGetErrorString(error) << std::endl;
         exit(-1);
     }
     if (!GLEW_VERSION_2_0) {
-        std::cerr << "You need OpenGL 2.0 or greater to run this demo" << std::endl;
+        std::cerr << "This program requires OpenGL 2.0" << std::endl;
         exit(-1);
     }
 #endif
@@ -124,7 +113,7 @@ void loadAssets() {
         }
     }
 	
-    // Load the vertex shader
+    // Load the vertex shade
     shader.reset(new Shader("shaders/phong"));
 	if (!shader->loaded()) {
 		std::cerr << "Shader failed to load" << std::endl;

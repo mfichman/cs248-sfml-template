@@ -7,15 +7,8 @@
  *
  */
 
-#ifdef _WIN32
-#define GLEW_STATIC
-#include <GL/glew.h>
-#endif
-
-#include <SFML/Window.hpp>
 #include "Shader.h"
 #include <fstream>
-#include <iostream>
 
 #define ERROR_BUFSIZE 1024
 
@@ -33,10 +26,9 @@ Shader::Shader(const std::string& path) :
 	std::vector<char> fragmentSource = readSource(path + ".frag.glsl");
 	source[0] = &fragmentSource.front();
     length = fragmentSource.size();
-
-    std::cout << glCreateShader << std::endl;
 	fragmentShader_ = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader_, 1, source, &length);
+    glCompileShader(fragmentShader_);
 		
 	// Load the vertex shader and compile
 	std::vector<char> vertexSource = readSource(path + ".vert.glsl");
@@ -44,6 +36,7 @@ Shader::Shader(const std::string& path) :
     length = vertexSource.size();
 	vertexShader_ = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader_, 1, source, &length);
+    glCompileShader(vertexShader_);
 	
 	// Create the vertex program
 	program_ = glCreateProgram();
@@ -52,18 +45,22 @@ Shader::Shader(const std::string& path) :
 	glLinkProgram(program_);
 	
 	// Error checking
-	glGetProgramiv(program_, GL_LINK_STATUS, (GLint*)&loaded_);
+	//glGetProgramiv(program_, GL_LINK_STATUS, (GLint*)&loaded_);
+    glGetShaderiv(vertexShader_, GL_COMPILE_STATUS, (GLint*)&loaded_);
 	if (!loaded_) {
 		GLchar tempErrorLog[ERROR_BUFSIZE];
 		GLsizei length;
 		
 		
 		glGetShaderInfoLog(fragmentShader_, ERROR_BUFSIZE, &length, tempErrorLog);
-		errors_ += std::string(tempErrorLog, length);
+        errors_ += "Fragment shader errors:\n";
+		errors_ += std::string(tempErrorLog, length) + "\n";
 		glGetShaderInfoLog(vertexShader_, ERROR_BUFSIZE, &length, tempErrorLog);
-		errors_ += std::string(tempErrorLog, length);
+        errors_ += "Vertex shader errors:\n";
+		errors_ += std::string(tempErrorLog, length) + "\n";
 		glGetProgramInfoLog(program_, ERROR_BUFSIZE, &length, tempErrorLog);
-		errors_ += std::string(tempErrorLog, length);
+        errors_ += "Linker errors:\n";
+		errors_ += std::string(tempErrorLog, length) + "\n";
 	}
 }
 

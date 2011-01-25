@@ -5,6 +5,7 @@
 *.pch
 *.opensdf
 *~
+main
 vs2010/Debug
 vs2010/Release
 xcode/build
