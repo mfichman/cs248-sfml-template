@@ -1,6 +1,0 @@
-*.o
-*.exe
-*.ilk
-*.pch
-vs2010/Debug
-

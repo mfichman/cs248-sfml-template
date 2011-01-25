@@ -3,6 +3,7 @@
 *.ipch
 *.ilk
 *.pch
+*~
 vs2010/Debug
 xcode/build
 
