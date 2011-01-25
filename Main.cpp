@@ -31,8 +31,6 @@ void loadAssets();
 void handleInput();
 void renderFrame();
 
-
-
 int main(int argc, char** argv) {
 
     initOpenGL();
