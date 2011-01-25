@@ -1,5 +1,4 @@
 *.o
-*.obj
 *.exe
 *.ilk
 *.pch
