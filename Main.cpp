@@ -4,6 +4,7 @@
 #include <aiPostProcess.h>
 #include <memory>
 #include <iostream>
+#include "Shader.h"
 
 #define MODEL_PATH "models/bunny.obj"
 #define ZNEAR 0.1f
@@ -25,6 +26,9 @@ sf::Clock clck;
 Assimp::Importer importer;
 const aiScene* scene;
 std::vector<unsigned> indexBuffer;
+
+// Vertex shader
+Shader shader("shaders/phong");
 
 void initOpenGL();
 void loadAssets();
@@ -91,7 +95,7 @@ void loadAssets() {
         std::cerr << importer.GetErrorString() << std::endl;
         exit(-1);
     }
-
+	
     // Set up the index buffer.  Each face should have 3 vertices since we
     // specified aiProcess_Triangulate
     aiMesh* mesh = scene->mMeshes[0];
@@ -100,6 +104,12 @@ void loadAssets() {
             indexBuffer.push_back(mesh->mFaces[i].mIndices[j]);
         }
     }
+	
+	if (!shader.loaded()) {
+		std::cerr << "Shader failed to load" << std::endl;
+		std::cerr << shader.errors() << std::endl;
+		exit(-1);
+	}
 
     std::cout << "Vertices: " << mesh->mNumVertices << std::endl;
     std::cout << "Faces: " << mesh->mNumFaces << std::endl;
@@ -150,6 +160,9 @@ void renderFrame() {
 
     // Just render the first mesh in the imported scene file
     aiMesh* mesh = scene->mMeshes[0];
+	
+	// Set the shader
+	glUseProgram(shader.program());
 
     // Set the material
     GLfloat material[] = { 1.0f, 1.0f, 1.0f, 1.0f };
