@@ -7,6 +7,11 @@
  *
  */
 
+#ifdef _WIN32
+#define GLEW_STATIC
+#include <GL/glew.h>
+#endif
+
 #include <SFML/Window.hpp>
 #include "Shader.h"
 #include <fstream>
@@ -22,16 +27,23 @@ Shader::Shader(const std::string& path) :
 	loaded_(false) {
 
 	const GLchar* source[1];
+    int length = 0;
 	
 	// Load the fragment shader and compile
 	std::vector<char> fragmentSource = readSource(path + ".frag.glsl");
 	source[0] = &fragmentSource.front();
+    length = fragmentSource.size();
+
+    std::cout << glCreateShader << std::endl;
 	fragmentShader_ = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader_, 1, source, &length);
 		
 	// Load the vertex shader and compile
 	std::vector<char> vertexSource = readSource(path + ".vert.glsl");
 	source[0] = &vertexSource.front();
+    length = vertexSource.size();
 	vertexShader_ = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader_, 1, source, &length);
 	
 	// Create the vertex program
 	program_ = glCreateProgram();
@@ -73,8 +85,8 @@ std::vector<char> Shader::readSource(const std::string& path) {
 	
 	// Seek to the end of the file to get the size
 	in.seekg(0, std::ios::end);
-	source.reserve(1 + in.tellg());
-	source.resize(in.tellg());
+	source.reserve((unsigned)(1 + in.tellg()));
+	source.resize((unsigned)in.tellg());
 	in.seekg(0, std::ios::beg);
 	if (source.empty()) {
 		source.push_back(0);

@@ -1,3 +1,9 @@
+
+#ifdef _WIN32
+#define GLEW_STATIC
+#include <GL/glew.h>
+#endif
+
 #include <SFML/Window.hpp>
 #include <assimp.hpp>
 #include <aiScene.h>
@@ -6,7 +12,7 @@
 #include <iostream>
 #include "Shader.h"
 
-#define MODEL_PATH "models/bunny.obj"
+#define MODEL_PATH "models/teapot.blend"
 #define ZNEAR 0.1f
 #define ZFAR 500.0f
 
@@ -28,7 +34,7 @@ const aiScene* scene;
 std::vector<unsigned> indexBuffer;
 
 // Vertex shader
-Shader shader("shaders/phong");
+std::auto_ptr<Shader> shader;
 
 void initOpenGL();
 void loadAssets();
@@ -55,6 +61,19 @@ int main(int argc, char** argv) {
 
 
 void initOpenGL() {
+    // Initialize GLEW on Windows, to make sure that OpenGL 2.0 is loaded
+#ifdef _WIN32
+    GLint error = glewInit();
+    if (GLEW_OK != error) {
+        std::cerr << glewGetErrorString(error) << std::endl;
+        exit(-1);
+    }
+    if (!GLEW_VERSION_2_0) {
+        std::cerr << "You need OpenGL 2.0 or greater to run this demo" << std::endl;
+        exit(-1);
+    }
+#endif
+
     // This initializes OpenGL with some common defaults.  More info here:
     // http://www.sfml-dev.org/tutorials/1.6/window-opengl.php
     glClearDepth(1.0f);
@@ -69,11 +88,11 @@ void initOpenGL() {
     glViewport(0, 0, window.GetWidth(), window.GetHeight());
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0f, window.GetWidth()/window.GetHeight(), ZNEAR, ZFAR);
+    gluPerspective(45.0f, (float)window.GetWidth()/window.GetHeight(), ZNEAR, ZFAR);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glTranslatef(0, 0, -5);
+    glTranslatef(0, 0, -3);
 }
 
 
@@ -85,10 +104,9 @@ void loadAssets() {
     // More info is here:
     // http://assimp.sourceforge.net/lib_html/usage.html
     scene = importer.ReadFile(MODEL_PATH,  
-        aiProcess_CalcTangentSpace |
+        //aiProcess_CalcTangentSpace |
         aiProcess_Triangulate |
-        aiProcess_JoinIdenticalVertices |
-        aiProcess_SortByPType |
+        //aiProcess_JoinIdenticalVertices |
         aiProcessPreset_TargetRealtime_Quality);
 
     if (!scene || scene->mNumMeshes <= 0) {
@@ -99,15 +117,18 @@ void loadAssets() {
     // Set up the index buffer.  Each face should have 3 vertices since we
     // specified aiProcess_Triangulate
     aiMesh* mesh = scene->mMeshes[0];
+    indexBuffer.reserve(mesh->mNumFaces * 3);
     for (unsigned i = 0; i < mesh->mNumFaces; i++) {
         for (unsigned j = 0; j < mesh->mFaces[i].mNumIndices; j++) {
             indexBuffer.push_back(mesh->mFaces[i].mIndices[j]);
         }
     }
 	
-	if (!shader.loaded()) {
+    // Load the vertex shader
+    shader.reset(new Shader("shaders/phong"));
+	if (!shader->loaded()) {
 		std::cerr << "Shader failed to load" << std::endl;
-		std::cerr << shader.errors() << std::endl;
+		std::cerr << shader->errors() << std::endl;
 		exit(-1);
 	}
 
@@ -138,7 +159,7 @@ void handleInput() {
             glViewport(0, 0, evt.Size.Width, evt.Size.Height);
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
-            gluPerspective(45.0f, evt.Size.Width/evt.Size.Height, ZNEAR, ZFAR);
+            gluPerspective(45.0f, (float)evt.Size.Width/evt.Size.Height, ZNEAR, ZFAR);
             glMatrixMode(GL_MODELVIEW);
             break;
         }
@@ -162,12 +183,31 @@ void renderFrame() {
     aiMesh* mesh = scene->mMeshes[0];
 	
 	// Set the shader
-	glUseProgram(shader.program());
+	glUseProgram(shader->program());
 
     // Set the material
-    GLfloat material[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, material);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 40.0f);
+    // Get the material for the mesh and give it to OpenGL
+    aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+    aiColor3D color;
+
+    material->Get(AI_MATKEY_COLOR_DIFFUSE, color);
+    GLfloat diffuse[] = { color.r, color.g, color.b, 1 };
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+
+    material->Get(AI_MATKEY_COLOR_SPECULAR, color);
+    GLfloat specular[] = { color.r, color.g, color.b, 1 };
+    glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+
+    material->Get(AI_MATKEY_COLOR_AMBIENT, color);
+    GLfloat ambient[] = { color.r, color.g, color.b, 1 };
+    glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+
+    float shininess;
+    if (AI_SUCCESS == material->Get(AI_MATKEY_SHININESS, shininess)) {
+        glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+    } else {
+        glMaterialf(GL_FRONT, GL_SHININESS, 511);
+    }
 
     // Give OpenGL the arrays of vertices, normals, and texture coordinates
     glVertexPointer(3, GL_FLOAT, sizeof(aiVector3D), mesh->mVertices);

@@ -12,6 +12,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp" />
+    <ClCompile Include="..\Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\shaders\phong.frag.glsl" />
+    <None Include="..\shaders\phong.vert.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DF5EFE84-6678-41AE-970C-1866E7408736}</ProjectGuid>
@@ -53,7 +61,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glu32.lib; user32.lib; gdi32.lib; sfml-audio-s-d.lib; sfml-graphics-s-d.lib; sfml-network-s-d.lib; sfml-system-s-d.lib; sfml-window-s-d.lib; assimp-s-d.lib;</AdditionalDependencies>
+      <AdditionalDependencies>glew32sd.lib; glu32.lib; user32.lib; gdi32.lib; sfml-audio-s-d.lib; sfml-graphics-s-d.lib; sfml-network-s-d.lib; sfml-system-s-d.lib; sfml-window-s-d.lib; assimp-s-d.lib;</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
