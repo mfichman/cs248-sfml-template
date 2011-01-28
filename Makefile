@@ -1,15 +1,16 @@
-CXXFLAGS = -Ilinux/include
+CXXFLAGS = -m32 -Ilinux/include -I/usr/class/cs248/include
 LIBS = -Llinux/lib \
 	-lsfml-audio \
 	-lsfml-network \
 	-lsfml-window \
 	-lsfml-graphics \
 	-lsfml-system \
-	-lassimp
+	-lassimp \
+    -lGLU
 OBJS = Main.o Shader.o
 
 main: $(OBJS)
-	g++ -o $@ $^ $(LIBS)
+	g++ -m32 -o $@ $^ $(LIBS)
 
 
 run: main
