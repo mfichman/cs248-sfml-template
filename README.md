@@ -22,6 +22,8 @@ Building and Running the Demo
 1. Open the Visual Studio project in the "vs2010" folder
 2. Run from the menu
 
+Note: On Windows, the asset importer is really slow in debug mode.  Switch to release mode, and the importer is much faster.
+
 
 Included Files
 --------------

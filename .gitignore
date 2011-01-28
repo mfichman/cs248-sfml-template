@@ -4,6 +4,8 @@
 *.ilk
 *.pch
 *.opensdf
+*.sdf
+*.suo
 *~
 main
 vs2010/Debug
