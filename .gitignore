@@ -3,7 +3,9 @@
 *.ipch
 *.ilk
 *.pch
+*.opensdf
 *~
 vs2010/Debug
+vs2010/Release
 xcode/build
 
