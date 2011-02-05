@@ -124,5 +124,5 @@ void renderFrame() {
     // TODO: ADD YOUR RENDERING CODE HERE.  You may use as many .cpp files 
     // in this assignment as you wish.
     //////////////////////////////////////////////////////////////////////////
-
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
