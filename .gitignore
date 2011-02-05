@@ -7,8 +7,11 @@
 *.sdf
 *.suo
 *~
+*.ncb
 main
 vs2010/Debug
 vs2010/Release
+vs2008/Debug
+vs2008/Release
 xcode/build
 
