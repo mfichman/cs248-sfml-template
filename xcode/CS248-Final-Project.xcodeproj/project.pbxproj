@@ -10,6 +10,8 @@
 		7E3635D712FCEEB500D6344A /* monkey.blend in Copy Models */ = {isa = PBXBuildFile; fileRef = 7E3635D412FCEEAD00D6344A /* monkey.blend */; };
 		7E3635D812FCEEB600D6344A /* teapot.3ds in Copy Models */ = {isa = PBXBuildFile; fileRef = 7E3635D512FCEEAD00D6344A /* teapot.3ds */; };
 		7E3635D912FCEEB600D6344A /* teapot.blend in Copy Models */ = {isa = PBXBuildFile; fileRef = 7E3635D612FCEEAD00D6344A /* teapot.blend */; };
+		7E36360F12FCF52A00D6344A /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E36360E12FCF52A00D6344A /* libassimp.dylib */; };
+		7E89428312FCF5C5009101D1 /* libassimp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E36360E12FCF52A00D6344A /* libassimp.dylib */; };
 		8DD76FB00486AB0100D96B5E /* CS248-Final-Project.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* CS248-Final-Project.1 */; };
 		C98951FB12EF808800B97901 /* phong.frag.glsl in Copy Shaders */ = {isa = PBXBuildFile; fileRef = C98951C112EF7C0A00B97901 /* phong.frag.glsl */; };
 		C98951FC12EF808800B97901 /* phong.vert.glsl in Copy Shaders */ = {isa = PBXBuildFile; fileRef = C98951C012EF7BFA00B97901 /* phong.vert.glsl */; };
@@ -23,8 +25,6 @@
 		C9EA8FE212EE79EB0002670E /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA8FDC12EE79EB0002670E /* sfml-window.framework */; };
 		C9EA8FE312EE79EB0002670E /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA8FDD12EE79EB0002670E /* SFML.framework */; };
 		C9EA904112EE79FB0002670E /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA904012EE79FB0002670E /* sndfile.framework */; };
-		C9EA904812EE7A200002670E /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA904712EE7A200002670E /* libassimp.dylib */; };
-		C9EA905512EE7B1B0002670E /* libassimp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA904712EE7A200002670E /* libassimp.dylib */; };
 		C9EA905612EE7B1B0002670E /* sndfile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA904012EE79FB0002670E /* sndfile.framework */; };
 		C9EA905712EE7B1B0002670E /* sfml-audio.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FD812EE79EB0002670E /* sfml-audio.framework */; };
 		C9EA905812EE7B1B0002670E /* sfml-graphics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FD912EE79EB0002670E /* sfml-graphics.framework */; };
@@ -63,7 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C9EA905512EE7B1B0002670E /* libassimp.dylib in CopyFiles */,
+				7E89428312FCF5C5009101D1 /* libassimp.dylib in CopyFiles */,
 				C9EA905612EE7B1B0002670E /* sndfile.framework in CopyFiles */,
 				C9EA905712EE7B1B0002670E /* sfml-audio.framework in CopyFiles */,
 				C9EA905812EE7B1B0002670E /* sfml-graphics.framework in CopyFiles */,
@@ -93,6 +93,7 @@
 		7E3635D412FCEEAD00D6344A /* monkey.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = monkey.blend; path = ../models/monkey.blend; sourceTree = SOURCE_ROOT; };
 		7E3635D512FCEEAD00D6344A /* teapot.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; name = teapot.3ds; path = ../models/teapot.3ds; sourceTree = SOURCE_ROOT; };
 		7E3635D612FCEEAD00D6344A /* teapot.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = teapot.blend; path = ../models/teapot.blend; sourceTree = SOURCE_ROOT; };
+		7E36360E12FCF52A00D6344A /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.dylib; sourceTree = SOURCE_ROOT; };
 		8DD76FB20486AB0100D96B5E /* CS248-Final-Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CS248-Final-Project"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* CS248-Final-Project.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "CS248-Final-Project.1"; sourceTree = "<group>"; };
 		C98951C012EF7BFA00B97901 /* phong.vert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = phong.vert.glsl; path = ../shaders/phong.vert.glsl; sourceTree = SOURCE_ROOT; };
@@ -108,7 +109,6 @@
 		C9EA8FDC12EE79EB0002670E /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "sfml-window.framework"; sourceTree = "<group>"; };
 		C9EA8FDD12EE79EB0002670E /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SFML.framework; sourceTree = "<group>"; };
 		C9EA904012EE79FB0002670E /* sndfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sndfile.framework; sourceTree = "<group>"; };
-		C9EA904712EE7A200002670E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,7 @@
 				C9EA8FE212EE79EB0002670E /* sfml-window.framework in Frameworks */,
 				C9EA8FE312EE79EB0002670E /* SFML.framework in Frameworks */,
 				C9EA904112EE79FB0002670E /* sndfile.framework in Frameworks */,
-				C9EA904812EE7A200002670E /* libassimp.dylib in Frameworks */,
+				7E36360F12FCF52A00D6344A /* libassimp.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +192,7 @@
 		C9EA90E912EE7FA60002670E /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				C9EA904712EE7A200002670E /* libassimp.dylib */,
+				7E36360E12FCF52A00D6344A /* libassimp.dylib */,
 				C9EA904012EE79FB0002670E /* sndfile.framework */,
 				C9EA8FD812EE79EB0002670E /* sfml-audio.framework */,
 				C9EA8FD912EE79EB0002670E /* sfml-graphics.framework */,
