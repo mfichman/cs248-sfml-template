@@ -45,8 +45,8 @@ Shader::Shader(const std::string& path) :
 	glLinkProgram(programID_);
 	
 	// Error checking
-	//glGetProgramiv(programID_, GL_LINK_STATUS, (GLint*)&loaded_);
-    glGetShaderiv(vertexShaderID_, GL_COMPILE_STATUS, (GLint*)&loaded_);
+	glGetProgramiv(programID_, GL_LINK_STATUS, (GLint*)&loaded_);
+    //glGetShaderiv(vertexShaderID_, GL_COMPILE_STATUS, (GLint*)&loaded_);
 	if (!loaded_) {
         GLchar tempErrorLog[ERROR_BUFSIZE];
 		GLsizei length;

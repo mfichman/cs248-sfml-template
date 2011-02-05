@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E3635D712FCEEB500D6344A /* monkey.blend in Copy Models */ = {isa = PBXBuildFile; fileRef = 7E3635D412FCEEAD00D6344A /* monkey.blend */; };
+		7E3635D812FCEEB600D6344A /* teapot.3ds in Copy Models */ = {isa = PBXBuildFile; fileRef = 7E3635D512FCEEAD00D6344A /* teapot.3ds */; };
+		7E3635D912FCEEB600D6344A /* teapot.blend in Copy Models */ = {isa = PBXBuildFile; fileRef = 7E3635D612FCEEAD00D6344A /* teapot.blend */; };
+		7E36360F12FCF52A00D6344A /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E36360E12FCF52A00D6344A /* libassimp.dylib */; };
+		7E89428312FCF5C5009101D1 /* libassimp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E36360E12FCF52A00D6344A /* libassimp.dylib */; };
 		8DD76FB00486AB0100D96B5E /* CS248-Final-Project.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* CS248-Final-Project.1 */; };
 		C98951FB12EF808800B97901 /* phong.frag.glsl in Copy Shaders */ = {isa = PBXBuildFile; fileRef = C98951C112EF7C0A00B97901 /* phong.frag.glsl */; };
 		C98951FC12EF808800B97901 /* phong.vert.glsl in Copy Shaders */ = {isa = PBXBuildFile; fileRef = C98951C012EF7BFA00B97901 /* phong.vert.glsl */; };
@@ -20,8 +25,6 @@
 		C9EA8FE212EE79EB0002670E /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA8FDC12EE79EB0002670E /* sfml-window.framework */; };
 		C9EA8FE312EE79EB0002670E /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA8FDD12EE79EB0002670E /* SFML.framework */; };
 		C9EA904112EE79FB0002670E /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA904012EE79FB0002670E /* sndfile.framework */; };
-		C9EA904812EE7A200002670E /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA904712EE7A200002670E /* libassimp.dylib */; };
-		C9EA905512EE7B1B0002670E /* libassimp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA904712EE7A200002670E /* libassimp.dylib */; };
 		C9EA905612EE7B1B0002670E /* sndfile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA904012EE79FB0002670E /* sndfile.framework */; };
 		C9EA905712EE7B1B0002670E /* sfml-audio.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FD812EE79EB0002670E /* sfml-audio.framework */; };
 		C9EA905812EE7B1B0002670E /* sfml-graphics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FD912EE79EB0002670E /* sfml-graphics.framework */; };
@@ -29,10 +32,6 @@
 		C9EA905A12EE7B1B0002670E /* sfml-system.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FDB12EE79EB0002670E /* sfml-system.framework */; };
 		C9EA905B12EE7B1B0002670E /* sfml-window.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FDC12EE79EB0002670E /* sfml-window.framework */; };
 		C9EA905C12EE7B1B0002670E /* SFML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9EA8FDD12EE79EB0002670E /* SFML.framework */; };
-		C9EA90D812EE7F7A0002670E /* bunny.mtl in Copy Models */ = {isa = PBXBuildFile; fileRef = C9EA90D412EE7F5A0002670E /* bunny.mtl */; };
-		C9EA90D912EE7F7A0002670E /* bunny.obj in Copy Models */ = {isa = PBXBuildFile; fileRef = C9EA90D512EE7F5A0002670E /* bunny.obj */; };
-		C9EA90DA12EE7F7A0002670E /* car.mtl in Copy Models */ = {isa = PBXBuildFile; fileRef = C9EA90D612EE7F5A0002670E /* car.mtl */; };
-		C9EA90DB12EE7F7A0002670E /* car.obj in Copy Models */ = {isa = PBXBuildFile; fileRef = C9EA90D712EE7F5A0002670E /* car.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,7 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C9EA905512EE7B1B0002670E /* libassimp.dylib in CopyFiles */,
+				7E89428312FCF5C5009101D1 /* libassimp.dylib in CopyFiles */,
 				C9EA905612EE7B1B0002670E /* sndfile.framework in CopyFiles */,
 				C9EA905712EE7B1B0002670E /* sfml-audio.framework in CopyFiles */,
 				C9EA905812EE7B1B0002670E /* sfml-graphics.framework in CopyFiles */,
@@ -81,10 +80,9 @@
 			dstPath = models;
 			dstSubfolderSpec = 7;
 			files = (
-				C9EA90D812EE7F7A0002670E /* bunny.mtl in Copy Models */,
-				C9EA90D912EE7F7A0002670E /* bunny.obj in Copy Models */,
-				C9EA90DA12EE7F7A0002670E /* car.mtl in Copy Models */,
-				C9EA90DB12EE7F7A0002670E /* car.obj in Copy Models */,
+				7E3635D712FCEEB500D6344A /* monkey.blend in Copy Models */,
+				7E3635D812FCEEB600D6344A /* teapot.3ds in Copy Models */,
+				7E3635D912FCEEB600D6344A /* teapot.blend in Copy Models */,
 			);
 			name = "Copy Models";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +90,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E3635D412FCEEAD00D6344A /* monkey.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = monkey.blend; path = ../models/monkey.blend; sourceTree = SOURCE_ROOT; };
+		7E3635D512FCEEAD00D6344A /* teapot.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; name = teapot.3ds; path = ../models/teapot.3ds; sourceTree = SOURCE_ROOT; };
+		7E3635D612FCEEAD00D6344A /* teapot.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = teapot.blend; path = ../models/teapot.blend; sourceTree = SOURCE_ROOT; };
+		7E36360E12FCF52A00D6344A /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.dylib; sourceTree = SOURCE_ROOT; };
 		8DD76FB20486AB0100D96B5E /* CS248-Final-Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CS248-Final-Project"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* CS248-Final-Project.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "CS248-Final-Project.1"; sourceTree = "<group>"; };
 		C98951C012EF7BFA00B97901 /* phong.vert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = phong.vert.glsl; path = ../shaders/phong.vert.glsl; sourceTree = SOURCE_ROOT; };
@@ -99,7 +101,7 @@
 		C989525712EF856100B97901 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = ../Shader.cpp; sourceTree = SOURCE_ROOT; };
 		C989525812EF856100B97901 /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shader.h; path = ../Shader.h; sourceTree = SOURCE_ROOT; };
 		C9EA8EF612EE67EA0002670E /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../Main.cpp; sourceTree = SOURCE_ROOT; };
-		C9EA8F0B12EE77060002670E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C9EA8F0B12EE77060002670E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		C9EA8FD812EE79EB0002670E /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "sfml-audio.framework"; sourceTree = "<group>"; };
 		C9EA8FD912EE79EB0002670E /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "sfml-graphics.framework"; sourceTree = "<group>"; };
 		C9EA8FDA12EE79EB0002670E /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "sfml-network.framework"; sourceTree = "<group>"; };
@@ -107,11 +109,6 @@
 		C9EA8FDC12EE79EB0002670E /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "sfml-window.framework"; sourceTree = "<group>"; };
 		C9EA8FDD12EE79EB0002670E /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SFML.framework; sourceTree = "<group>"; };
 		C9EA904012EE79FB0002670E /* sndfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sndfile.framework; sourceTree = "<group>"; };
-		C9EA904712EE7A200002670E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.dylib; sourceTree = "<group>"; };
-		C9EA90D412EE7F5A0002670E /* bunny.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bunny.mtl; path = ../models/bunny.mtl; sourceTree = SOURCE_ROOT; };
-		C9EA90D512EE7F5A0002670E /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bunny.obj; path = ../models/bunny.obj; sourceTree = SOURCE_ROOT; };
-		C9EA90D612EE7F5A0002670E /* car.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = car.mtl; path = ../models/car.mtl; sourceTree = SOURCE_ROOT; };
-		C9EA90D712EE7F5A0002670E /* car.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = car.obj; path = ../models/car.obj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +124,7 @@
 				C9EA8FE212EE79EB0002670E /* sfml-window.framework in Frameworks */,
 				C9EA8FE312EE79EB0002670E /* SFML.framework in Frameworks */,
 				C9EA904112EE79FB0002670E /* sndfile.framework in Frameworks */,
-				C9EA904812EE7A200002670E /* libassimp.dylib in Frameworks */,
+				7E36360F12FCF52A00D6344A /* libassimp.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,10 +182,9 @@
 		C9EA90BA12EE7EDB0002670E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C9EA90D412EE7F5A0002670E /* bunny.mtl */,
-				C9EA90D512EE7F5A0002670E /* bunny.obj */,
-				C9EA90D612EE7F5A0002670E /* car.mtl */,
-				C9EA90D712EE7F5A0002670E /* car.obj */,
+				7E3635D412FCEEAD00D6344A /* monkey.blend */,
+				7E3635D512FCEEAD00D6344A /* teapot.3ds */,
+				7E3635D612FCEEAD00D6344A /* teapot.blend */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -196,7 +192,7 @@
 		C9EA90E912EE7FA60002670E /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				C9EA904712EE7A200002670E /* libassimp.dylib */,
+				7E36360E12FCF52A00D6344A /* libassimp.dylib */,
 				C9EA904012EE79FB0002670E /* sndfile.framework */,
 				C9EA8FD812EE79EB0002670E /* sfml-audio.framework */,
 				C9EA8FD912EE79EB0002670E /* sfml-graphics.framework */,
@@ -240,7 +236,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "CS248-Final-Project" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -289,6 +284,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "CS248-Final-Project";
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
@@ -308,6 +304,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "CS248-Final-Project";
+				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};

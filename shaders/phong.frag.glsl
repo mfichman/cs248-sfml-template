@@ -28,13 +28,13 @@ void main() {
 		
 	// Calculate the diffuse color coefficient, and sample the diffuse texture
 	float Rd = max(0.0, dot(L, N));
-	vec3 Td = texture2D(diffuseMap, texcoord);
+	vec3 Td = texture2D(diffuseMap, texcoord).rgb;
 	vec3 diffuse = Rd * Kd * Td * gl_LightSource[0].diffuse.rgb;
 	
 	// Calculate the specular coefficient
 	vec3 R = reflect(-L, N);
 	float Rs = pow(max(0.0, dot(V, R)), alpha);
-	vec3 Ts = texture2D(specularMap, texcoord);
+	vec3 Ts = texture2D(specularMap, texcoord).rgb;
 	vec3 specular = Rs * Ks * Ts * gl_LightSource[0].specular.rgb;
 		
 	// Ambient is easy
