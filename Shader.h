@@ -1,11 +1,5 @@
-/*
- *  Shader.h
- *  CS248-Final-Project
- *
- *  Created by Matthew Fichman on 1/25/11.
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
- *
- */
+#ifndef SHADER_H
+#define SHADER_H
 
 #include "Framework.h"
 #include <string>
@@ -36,14 +30,14 @@ public:
 	
 	/**
 	 * Returns the OpenGL handle for the GPU program.  You can use the handle
-	 * with OpenGL like this: glUseProgram(shader->program());
+	 * with OpenGL like this: glUseProgram(shader->programID());
 	 * Calling glUseProgram() will replace OpenGL's fixed pipeline with your
 	 * vertex/fragment shader.  You can also use the program handle to 
 	 * get/set uniform values and attributes using glUniformLocation(),
 	 * glUniform(), glAttributeLocation(), and glAttribute().
 	 * @return OpenGL handle to the GPU program
 	 */
-	GLuint program() const;
+	GLuint programID() const;
 	
 	/**
 	 * If the shader loaded successfully, then this function will return true.
@@ -63,8 +57,10 @@ private:
 	
 	std::string path_;
 	std::string errors_;
-	GLuint vertexShader_;
-	GLuint fragmentShader_;
-	GLuint program_;
+	GLuint vertexShaderID_;
+	GLuint fragmentShaderID_;
+	GLuint programID_;
 	bool loaded_;
 };
+
+#endif

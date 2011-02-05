@@ -1,30 +1,45 @@
+// This is a texture sampler.  It lets you sample textures!  The keyword
+// "uniform" means constant - sort of.  The uniform variables are the same
+// for all fragments in an object, but they can change in between objects.
+uniform sampler2D diffuseMap;
+uniform sampler2D specularMap;
 
-#define NUMBER_OF_LIGHTS 3
+// Diffuse, ambient, and specular materials.  These are also uniform.
+uniform vec3 Kd;
+uniform vec3 Ks;
+uniform vec3 Ka;
+uniform float alpha;
 
-uniform sampler2D texture;
-varying vec3 eye;
+// These are values that OpenGL interpoates for us.  Note that some of these
+// are repeated from the fragment shader.  That's because they're passed
+// across.
 varying vec2 texcoord;
 varying vec3 normal;
+varying vec3 eyePosition;
 
 void main() {
-	gl_FragColor = vec4(0);
-	vec3 N = normalize(normal);
-	vec3 V = normalize(eye);
 
-	// Calculate the fragment color by adding all the lights
-	for (int i = 0; i < NUMBER_OF_LIGHTS; i++) {
-		// Normalize the light vector and view vector
-		vec3 L = normalize(gl_LightSource[i].position.xyz);
+	// Normalize the normal, and calculate light vector and view vector
+	// Note: this is doing a directional light, which is a little different
+	// from what you did in Assignment 2.
+	vec3 N = normalize(normal);
+	vec3 L = normalize(gl_LightSource[0].position.xyz);
+	vec3 V = normalize(-eyePosition);
 		
-		// Calculate the diffuse coefficient
-		float Kd = max(0.0, dot(L, N));
+	// Calculate the diffuse color coefficient, and sample the diffuse texture
+	float Rd = max(0.0, dot(L, N));
+	vec3 Td = texture2D(diffuseMap, texcoord);
+	vec3 diffuse = Rd * Kd * Td * gl_LightSource[0].diffuse.rgb;
 	
-		// Calculate the specular coefficient
-		vec3 R = reflect(L, N);
-		float Ks = pow(max(0.0, dot(R, V)), gl_FrontMaterial.shininess);
+	// Calculate the specular coefficient
+	vec3 R = reflect(-L, N);
+	float Rs = pow(max(0.0, dot(V, R)), alpha);
+	vec3 Ts = texture2D(specularMap, texcoord);
+	vec3 specular = Rs * Ks * Ts * gl_LightSource[0].specular.rgb;
 		
-		gl_FragColor += Kd * gl_LightSource[i].diffuse * gl_FrontMaterial.diffuse;
-		gl_FragColor += Ks * gl_LightSource[i].specular * gl_FrontMaterial.specular;
-		gl_FragColor += gl_LightSource[i].ambient * gl_FrontMaterial.ambient;
-	}
+	// Ambient is easy
+	vec3 ambient = Ka * gl_LightSource[0].ambient.rgb;
+
+	// This actually writes to the frame buffer
+	gl_FragColor = vec4(diffuse + specular + ambient, 1);
 }

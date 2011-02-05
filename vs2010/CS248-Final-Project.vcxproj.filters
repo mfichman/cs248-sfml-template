@@ -30,15 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Shader.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\shaders\phong.frag.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\shaders\phong.vert.glsl">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

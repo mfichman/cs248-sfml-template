@@ -17,10 +17,6 @@
   <ItemGroup>
     <ClInclude Include="..\Shader.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\shaders\phong.frag.glsl" />
-    <None Include="..\shaders\phong.vert.glsl" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DF5EFE84-6678-41AE-970C-1866E7408736}</ProjectGuid>
     <RootNamespace>CS248FinalProject</RootNamespace>
