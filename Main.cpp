@@ -111,6 +111,8 @@ void handleInput() {
             // transformation and viewport
             glViewport(0, 0, evt.Size.Width, evt.Size.Height);
             break;
+        default: 
+            break;
         }
     }
 }
