@@ -50,8 +50,8 @@ void initOpenGL() {
         std::cerr << glewGetErrorString(error) << std::endl;
         exit(-1);
     }
-    if (!GLEW_VERSION_2_0) {
-        std::cerr << "This program requires OpenGL 2.0" << std::endl;
+    if (!GLEW_VERSION_2_0 || !GL_EXT_framebuffer_object) {
+        std::cerr << "This program requires OpenGL 2.0 and FBOs" << std::endl;
         exit(-1);
     }
 #endif

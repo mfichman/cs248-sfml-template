@@ -115,6 +115,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="include"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				RuntimeLibrary="2"
 				WarningLevel="3"
@@ -131,8 +132,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(NoInherit)"
+				AdditionalDependencies="glew32sd.lib glu32.lib user32.lib gdi32.lib sfml-audio-s.lib sfml-graphics-s.lib sfml-network-s.lib sfml-system-s.lib sfml-window-s.lib assimp-s.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
